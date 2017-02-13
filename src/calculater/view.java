@@ -14,22 +14,36 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 public class view{
-	public model calculator;
-	private boolean numFlag;
+	boolean numFlag;
 	private double first,second;
-	private String op;
+private String op;
 	private JFrame frmCalculator;
-	private JTextField result;
-
+	public JTextField result;
+	JButton b0,b1,b2,b3,b4,b5,b6,b8,b9,b7,btnMod_1,bmult,badd,bsub,bdiv,bback,equal,bdot,bC,bCe,button;
 	/**
 	 * Launch the application.
 	 */
+	public double getFirstNumber()
+	{
+		return first;
+	}
+	public double getSecondNumber()
+	{
+		return second;
+	}
+	public void setFirstNumber(double n){
+		first=n;
+	}
+	public void setSecondNumber(double n){
+		second=n;
+	}
 	public static void main(String[] args) {
-		model n=new model();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					view window = new view();
+					model modl=new model();
+					Controller c=new Controller(modl,window);	
 					window.frmCalculator.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,9 +57,8 @@ public class view{
 	 */
 	public view() {
 		numFlag=false;
-		op="";
+		setOp("");
 		initialize();
-		calculator = new model();
 		try{
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		}
@@ -74,7 +87,7 @@ public class view{
 		frmCalculator.getContentPane().add(result);
 		result.setColumns(10);
 		
-		JButton b7 = new JButton("7");
+		 b7 = new JButton("7");
 		b7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!numFlag)
@@ -87,7 +100,7 @@ public class view{
 		b7.setBounds(30, 116, 60, 50);
 		frmCalculator.getContentPane().add(b7);
 		
-		JButton b0 = new JButton("0");
+		 b0 = new JButton("0");
 		b0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!numFlag)
@@ -100,7 +113,7 @@ public class view{
 		b0.setBounds(92, 277, 60, 50);
 		frmCalculator.getContentPane().add(b0);
 		
-		JButton b9 = new JButton("9");
+		 b9 = new JButton("9");
 		b9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!numFlag)
@@ -114,20 +127,20 @@ public class view{
 		b9.setBounds(155, 116, 60, 50);
 		frmCalculator.getContentPane().add(b9);
 		
-		JButton btnMod_1 = new JButton("Mod");
+		 btnMod_1 = new JButton("Mod");
 		btnMod_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!result.getText().isEmpty())
 
 				first=Double.parseDouble(result.getText());
-	op="mod";
+	setOp("mod");
 				numFlag=true;
 			}
 		});
 		btnMod_1.setBounds(240, 277, 70, 50);
 		frmCalculator.getContentPane().add(btnMod_1);
 		
-		JButton b1 = new JButton("1");
+	 b1 = new JButton("1");
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!numFlag)
@@ -141,7 +154,7 @@ public class view{
 		b1.setBounds(30, 223, 60, 50);
 		frmCalculator.getContentPane().add(b1);
 		
-		JButton b2 = new JButton("2");
+		 b2 = new JButton("2");
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!numFlag)
@@ -155,7 +168,7 @@ public class view{
 		b2.setBounds(92, 223, 60, 50);
 		frmCalculator.getContentPane().add(b2);
 		
-		JButton b3 = new JButton("3");
+		 b3 = new JButton("3");
 		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!numFlag)
@@ -169,7 +182,7 @@ public class view{
 		b3.setBounds(155, 223, 60, 50);
 		frmCalculator.getContentPane().add(b3);
 		
-		JButton b4 = new JButton("4");
+		 b4 = new JButton("4");
 		b4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!numFlag)
@@ -183,7 +196,7 @@ public class view{
 		b4.setBounds(30, 169, 60, 50);
 		frmCalculator.getContentPane().add(b4);
 		
-		JButton b5 = new JButton("5");
+		 b5 = new JButton("5");
 		b5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!numFlag)
@@ -197,7 +210,7 @@ public class view{
 		b5.setBounds(92, 169, 60, 50);
 		frmCalculator.getContentPane().add(b5);
 		
-		JButton b6 = new JButton("6");
+		 b6 = new JButton("6");
 		b6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!numFlag)
@@ -210,7 +223,7 @@ public class view{
 		b6.setBounds(155, 169, 60, 50);
 		frmCalculator.getContentPane().add(b6);
 		
-		JButton b8 = new JButton("8");
+		 b8 = new JButton("8");
 		b8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!numFlag)
@@ -223,46 +236,46 @@ public class view{
 		b8.setBounds(92, 116, 60, 50);
 		frmCalculator.getContentPane().add(b8);
 		
-		JButton bmult = new JButton("x");
+		 bmult = new JButton("x");
 		bmult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!result.getText().isEmpty())
 
 				first=Double.parseDouble(result.getText());
 
-				op="mult";
+				setOp("mult");
 				numFlag=true;
 			}
 		});
 		bmult.setBounds(240, 116, 70, 50);
 		frmCalculator.getContentPane().add(bmult);
 		
-		JButton bsub = new JButton("-");
+		 bsub = new JButton("-");
 		bsub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!result.getText().isEmpty())
 
 				first=Double.parseDouble(result.getText());
-	op="sub";
+	setOp("sub");
 				numFlag=true;
 			}
 		});
 		bsub.setBounds(240, 169, 70, 50);
 		frmCalculator.getContentPane().add(bsub);
 		
-		JButton bdiv = new JButton("/");
+		 bdiv = new JButton("/");
 		bdiv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!result.getText().isEmpty())
 				first=Double.parseDouble(result.getText());
 
-				op="div";
+				setOp("div");
 				numFlag=true;}
 		});
 		bdiv.setBounds(240, 64, 70, 50);
 		frmCalculator.getContentPane().add(bdiv);
 		
-		JButton bback = new JButton("\u2190");
+		 bback = new JButton("\u2190");
 		bback.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				result.setText(result.getText().substring(0, result.getText().length()-1));
@@ -271,7 +284,7 @@ public class view{
 		bback.setBounds(155, 64, 60, 50);
 		frmCalculator.getContentPane().add(bback);
 		
-		JButton bC = new JButton("C");
+		 bC = new JButton("C");
 		bC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				result.setText("");
@@ -280,7 +293,7 @@ public class view{
 		bC.setBounds(92, 64, 60, 50);
 		frmCalculator.getContentPane().add(bC);
 		
-		JButton bCe = new JButton("CE");
+		 bCe = new JButton("CE");
 		bCe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				result.setText("");
@@ -289,68 +302,25 @@ public class view{
 		bCe.setBounds(30, 64, 60, 50);
 		frmCalculator.getContentPane().add(bCe);
 		
-		JButton badd = new JButton("+");
+		 badd = new JButton("+");
 		badd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!result.getText().isEmpty())
 
 				first=Double.parseDouble(result.getText());
-				op="add";
+				setOp("add");
 				numFlag=true;
 			}
 		});
 		badd.setBounds(240, 223, 70, 50);
 		frmCalculator.getContentPane().add(badd);
 		
-		JButton equal = new JButton("=");
-		equal.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				numFlag=true;		
-				if(!result.getText().isEmpty())
-				second=Double.parseDouble(result.getText());
-				switch(op)
-				{
-				case "add":
-					result.setText(calculator.add(first, second)+"");
-					op="";
-					break;
-				case "div":
-					if(second==0)
-						result.setText("INFINITY");
-					else
-					result.setText(calculator.div(first, second)+"");
-					op="";
-			
-
-					break;
-				case "mult":
-					result.setText(calculator.mult(first, second)+"");
-					op="";
-				
-
-					break;
-				case "mod":
-					result.setText(calculator.mod(first, second)+"");
-
-					op="";
-
-					break;
-				case "sub":
-					result.setText(calculator.sub(first, second)+"");
-
-					op="";
-
-					break;
-					default:
-						
-						break;
-				}
-			}
-		});
+		 equal = new JButton("=");
+	
 		equal.setBounds(102, 330, 123, 42);
 		frmCalculator.getContentPane().add(equal);
 		
-		JButton bdot = new JButton(".");
+		 bdot = new JButton(".");
 		bdot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!numFlag)
@@ -362,13 +332,13 @@ public class view{
 						result.setText("0.");
 						numFlag=false;
 					}
-			}
+		}
 		});
 		bdot.setBounds(30, 277, 60, 50);
 		
 		frmCalculator.getContentPane().add(bdot);
 		
-		JButton button = new JButton("- +");
+		 button = new JButton("- +");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(result.getText().startsWith("-"))
@@ -379,5 +349,11 @@ public class view{
 		});
 		button.setBounds(155, 277, 60, 50);
 		frmCalculator.getContentPane().add(button);
+	}
+	public String getOp() {
+		return op;
+	}
+	public void setOp(String op) {
+		this.op = op;
 	}
 }
