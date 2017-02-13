@@ -19,7 +19,7 @@ public Controller(model m,view v){
 			v.numFlag=true;		
 			firstNumber=v.getFirstNumber();
 			if(!v.result.getText().isEmpty())
-				secondNumber=Double.parseDouble(v.result.getText());
+				secondNumber=v.getSecondNumber();
 			switch(v.getOp())
 			{
 			case "add":

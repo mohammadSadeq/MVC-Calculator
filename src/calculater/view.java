@@ -28,7 +28,7 @@ private String op;
 		return first;
 	}
 	public double getSecondNumber()
-	{
+	{	second=Double.parseDouble(result.getText());
 		return second;
 	}
 	public void setFirstNumber(double n){
