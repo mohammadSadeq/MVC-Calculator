@@ -19,6 +19,10 @@ public double mult(double x,double y){
 		z=Double.POSITIVE_INFINITY;
 		
 	}
+	
+	
+	
+	
 	return z;
 }public double sub(double x,double y){
 	return x-y;

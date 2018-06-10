@@ -57,6 +57,7 @@ public Controller(model m,view v){
 					
 					break;
 			}
+			
 		}
 	});
 	

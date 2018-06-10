@@ -20,6 +20,9 @@ public class ModTest {
 		assertEquals( calc.div(-1.5,3),-0.5,0);
 		assertEquals( calc.div(1,0),Double.POSITIVE_INFINITY,0);
 		assertEquals( calc.div(10000000,2),5000000,0);
+		
+		
+		
 		assertEquals( calc.div(9,51),0.1764,0.0001);
 		assertEquals( calc.div(2,1000000),0.000002,0);
 		assertEquals( calc.div(9,3),3,0);
